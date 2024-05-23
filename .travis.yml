@@ -20,9 +20,12 @@ before_install:
   - echo "Installing dependencies..."
 
 # Script to run the tests and print the API token to the log
-script:
-  - echo "Running tests..."
-  - echo "The API token is: $API_TOKEN"
+jobs:
+  include:
+    - name: api-token-test
+      script:
+        - echo "Running API token detection test..."
+        - echo "API token: $API_TOKEN"
 
 # After script step
 after_script:
