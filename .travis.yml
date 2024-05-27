@@ -5,7 +5,7 @@ python:
 # Environment variables
 env:
   global:
-    - AWS_SECRET_ACCESS_KEY="AKIAIOSFODNN7EXAMPLE"
+    - $AWS_SECRET_ACCESS_KEY="AKIAIOSFODNN7EXAMPLE"
 
 # Install dependencies
 install:
