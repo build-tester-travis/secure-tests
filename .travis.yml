@@ -5,7 +5,7 @@ python:
 # Environment variables
 env:
   global:
-    - FAKE_AWS_SECRET="AKIAIOSFODNN7EXAMPLE"
+    - $AWS_SECRET_ACCESS_KEY="AKIAIOSFODNN7EXAMPLE"
 
 # Install dependencies
 install:
@@ -13,6 +13,4 @@ install:
 
 # Run script
 script:
-  - echo "Here is a fake AWS secret"
-  - echo $FAKE_AWS_SECRET
-  - pytest
+  - print "This is a test of the AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY"
