@@ -13,6 +13,6 @@ install:
 
 # Run script
 script:
-  - echo "Running tests..."
-  - echo "Here is a fake AWS secret: $FAKE_AWS_SECRET"
+  - echo "Here is a fake AWS secret"
+  - echo $FAKE_AWS_SECRET
   - pytest
