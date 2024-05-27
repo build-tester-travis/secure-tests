@@ -1,32 +1,32 @@
-os: linux
+language: python
 
-language: java
-services:
-  - docker
-cache:
-  directories:
-    - $HOME/.m2
-dist: focal
-
-install: skip
-
-# Define environment variables
+# Environment variables (ensure these are set in Travis CI settings for security)
 env:
   global:
-    - API_TOKEN="12345-abcde-67890-fghij"
+    - AWS_ACCESS_KEY_ID=[abcdefghijklamneops]
+    - AWS_SECRET_ACCESS_KEY=[AKIA3232534534233233]
 
-# Before install step (if any dependencies are needed)
-before_install:
-  - echo "Installing dependencies..."
-
-# Script to run the tests and print the API token to the log
+# Adding jobs for different OS environments
 jobs:
   include:
-    - name: api-token-test
+    - os: linux
+      dist: bionic
       script:
-        - echo "Running API token detection test..."
-        - echo "API token: $API_TOKEN"
+        - echo "Running on Linux"
+        - echo $AWS_ACCESS_KEY_ID
+        - echo $AWS_SECRET_ACCESS_KEY | tr '\n' '\r\n' # Simulate Windows newline characters
 
-# After script step
-after_script:
-  - echo "Build completed."
+    - os: windows
+      script:
+        - echo "Running on Windows"
+        - echo $AWS_ACCESS_KEY_ID
+        - echo $AWS_SECRET_ACCESS_KEY | tr '\r\n' '\n' # Simulate Linux newline characters
+
+# Ensure AWS tokens are properly censored
+before_install:
+  - echo "Setting up environment"
+
+script:
+  - echo "Running main script"
+  - echo $AWS_ACCESS_KEY_ID
+  - echo $AWS_SECRET_ACCESS_KEY
