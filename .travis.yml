@@ -1,5 +1,13 @@
 language: python
+
+env:
+  global:
+    - secure: "REDACTED"
+
 script:
   - echo "secure keyword"
   - echo "password=supersecret"
   - echo "token=123456"
+
+after_success:
+  - echo "Build successful"
