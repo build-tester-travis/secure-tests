@@ -1,6 +1,6 @@
 language: python
 
-# Environment variables (placeholder values)
+# Environment variables
 env:
   global:
     - AWS_ACCESS_KEY_ID=FAKEAWSACCESSKEYID12345
