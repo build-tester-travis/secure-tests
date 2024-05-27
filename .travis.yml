@@ -1,20 +1,18 @@
-os: linux
-language: java
-services:
-  - docker
-cache: bundler
-dist: focal
-install: skip
-jobs:
-  include:
-    - name: failing
-      script: true
-after_success:
-  - echo done
-  - echo $TRAVIS_TEST_RESULT
-after_failure:
-  - echo failed
-  - echo $TRAVIS_TEST_RESULT
-before_install:
-  - openssl aes-256-cbc -K $encrypted_219f0d0aafc5_key -iv $encrypted_219f0d0aafc5_iv
-    -in test-ssh-key.txt.enc -out test-ssh-key.txt -d
+language: python
+python:
+  - "3.8"
+
+# Define the environment variables
+env:
+  global:
+    - FAKE_AWS_SECRET="AKIAIOSFODNN7EXAMPLE"
+
+# Install dependencies
+install:
+  - pip install -r requirements.txt
+
+# Run script
+script:
+  - echo "Running tests..."
+  - echo "Here is a fake AWS secret: $FAKE_AWS_SECRET"
+  - pytest
