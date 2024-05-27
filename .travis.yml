@@ -6,7 +6,7 @@ env:
     - AWS_ACCESS_KEY_ID=FAKEAWSACCESSKEYID12345
     - AWS_SECRET_ACCESS_KEY=FAKEAWSSECRETACCESSKEY1234567890
 
-# Adding jobs for different OS environments
+# Linux build configuration
 jobs:
   include:
     - os: linux
@@ -16,13 +16,6 @@ jobs:
         - echo $AWS_ACCESS_KEY_ID
         - echo $AWS_SECRET_ACCESS_KEY | tr '\n' '\r\n' # Simulate Windows newline characters
 
-    - os: windows
-      script:
-        - echo "Running on Windows"
-        - echo $AWS_ACCESS_KEY_ID
-        - echo $AWS_SECRET_ACCESS_KEY | tr '\r\n' '\n' # Simulate Linux newline characters
-
-# Ensure AWS tokens are properly censored
 before_install:
   - echo "Setting up environment"
 
@@ -30,3 +23,4 @@ script:
   - echo "Running main script"
   - echo $AWS_ACCESS_KEY_ID
   - echo $AWS_SECRET_ACCESS_KEY
+  - echo $AWS_SECRET_ACCESS_KEY | tr '\r\n' '\n' # Simulate Unix newline characters
