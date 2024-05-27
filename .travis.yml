@@ -2,7 +2,7 @@ language: python
 python:
   - "3.8"
 
-# Define the environment variables
+# Environment variables
 env:
   global:
     - FAKE_AWS_SECRET="AKIAIOSFODNN7EXAMPLE"
@@ -14,5 +14,5 @@ install:
 # Run script
 script:
   - echo "Running tests..."
-  - echo "Here is a fake AWS secret: $FAKE_AWS_SECRET"
+  - echo "Here is AWS secret: $FAKE_AWS_SECRET"
   - pytest
