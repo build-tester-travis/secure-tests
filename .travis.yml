@@ -1,26 +1,5 @@
 language: python
-
-# Environment variables
-env:
-  global:
-    - AWS_ACCESS_KEY_ID=FAKEAWSACCESSKEYID12345
-    - AWS_SECRET_ACCESS_KEY=FAKEAWSSECRETACCESSKEY1234567890
-
-# Linux build configuration
-jobs:
-  include:
-    - os: linux
-      dist: bionic
-      script:
-        - echo "Running on Linux"
-        - echo $AWS_ACCESS_KEY_ID
-        - echo $AWS_SECRET_ACCESS_KEY | tr '\n' '\r\n' # Simulate Windows newline characters
-
-before_install:
-  - echo "Setting up environment"
-
 script:
-  - echo "Running main script"
-  - echo $AWS_ACCESS_KEY_ID
-  - echo $AWS_SECRET_ACCESS_KEY
-  - echo $AWS_SECRET_ACCESS_KEY | tr '\r\n' '\n' # Simulate Unix newline characters
+  - echo "secure keyword"
+  - echo "password=supersecret"
+  - echo "token=123456"
