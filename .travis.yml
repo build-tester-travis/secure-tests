@@ -13,4 +13,5 @@ install:
 
 # Run script
 script:
-  - print "This is a test of the AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY"
+  - echo "This is a test of the AWS_SECRET_ACCESS_KEY"
+  - echo $AWS_SECRET_ACCESS_KEY"
