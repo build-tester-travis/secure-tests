@@ -2,16 +2,12 @@ language: python
 python:
   - "3.8"
 
-# Environment variables
-env:
-  global:
-    - AWS_SECRET_ACCESS_KEY="AKIAIOSFODNN7EXAMPLE"
-
 # Install dependencies
 install:
   - pip install -r requirements.txt
 
 # Run script
 script:
-  - echo "This is a test of the AWS_SECRET_ACCESS_KEY"
-  - echo $AWS_SECRET_ACCESS_KEY
+  - print("My AWS_CLIENT_SECRET=[abcdefghijklamneops]")
+  - print("My AWS_CLIENT_SECRET=[AKIA3232534534233233]")
+  - print("My AWS_CLIENT_SECRET=wJalrXUtnFEMI/K7MDENG/bPxRfiCY/shshshsh")
