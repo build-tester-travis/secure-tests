@@ -16,5 +16,5 @@ after_failure:
   - echo failed
   - echo $TRAVIS_TEST_RESULT
 before_install:
-  - openssl aes-256-cbc -K $encrypted_219f0d0aafc5_key -iv $encrypted_219f0d0aafc5_iv
-    -in test-ssh-key.txt.enc -out test-ssh-key.txt -d
+  - openssl aes-256-cbc -K $encrypted_44968833502b_key -iv $encrypted_44968833502b_iv
+    -in test-ssh-key.enc -out test-ssh-key -d
