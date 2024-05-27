@@ -1,10 +1,10 @@
 language: python
 
-# Environment variables (ensure these are set in Travis CI settings for security)
+# Environment variables (placeholder values)
 env:
   global:
-    - AWS_ACCESS_KEY_ID=[abcdefghijklamneops]
-    - AWS_SECRET_ACCESS_KEY=[AKIA3232534534233233]
+    - AWS_ACCESS_KEY_ID=FAKEAWSACCESSKEYID12345
+    - AWS_SECRET_ACCESS_KEY=FAKEAWSSECRETACCESSKEY1234567890
 
 # Adding jobs for different OS environments
 jobs:
