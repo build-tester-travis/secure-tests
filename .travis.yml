@@ -1,13 +1,26 @@
 language: python
 
+python:
+  - "3.8"
+
+# Define environment variables (example data for testing)
 env:
   global:
-    - secure: "REDACTED"
+    - SECURE_API_KEY=secure_api_key_example
+    - AWS_SECRET_ACCESS_KEY=aws_secret_access_key_example
+    - AWS_ACCESS_KEY_ID=aws_access_key_id_example
 
+# Install dependencies
+install:
+  - pip install -r requirements.txt
+
+# Script that might print sensitive data
 script:
-  - echo "secure keyword"
-  - echo "password=supersecret"
-  - echo "token=123456"
-
-after_success:
-  - echo "Build successful"
+  - echo "Running tests..."
+  # Simulate a 'secure' keyword exposure
+  - echo "This is a secure keyword example: $SECURE_API_KEY"
+  # Simulate an API token exposure
+  - echo "API token: 12345abcdef"
+  # Simulate AWS-like secret exposure
+  - echo "AWS Secret: $AWS_SECRET_ACCESS_KEY"
+  - echo "AWS Key: $AWS_ACCESS_KEY_ID"
