@@ -1,26 +1,16 @@
 language: python
 
-# Environment variables
-env:
-  global:
-    - AWS_ACCESS_KEY_ID=FAKEAWSACCESSKEYID12345
-    - AWS_SECRET_ACCESS_KEY=FAKEAWSSECRETACCESSKEY1234567890
-
-# Linux build configuration
 jobs:
   include:
-    - os: linux
-      dist: bionic
+    - stage: test
+      name: "Test 1: Detect Secure Keywords"
       script:
-        - echo "Running on Linux"
-        - echo $AWS_ACCESS_KEY_ID
-        - echo $AWS_SECRET_ACCESS_KEY | tr '\n' '\r\n' # Simulate Windows newline characters
-
-before_install:
-  - echo "Setting up environment"
-
-script:
-  - echo "Running main script"
-  - echo $AWS_ACCESS_KEY_ID
-  - echo $AWS_SECRET_ACCESS_KEY
-  - echo $AWS_SECRET_ACCESS_KEY | tr '\r\n' '\n' # Simulate Unix newline characters
+        - echo "This is a secure keyword: secure_password"
+    - stage: test
+      name: "Test 2: Detect API Tokens"
+      script:
+        - echo "API Token: 12345-abcdef-67890"
+    - stage: test
+      name: "Test 3: Detect AWS-like Secrets"
+      script:
+        - echo "AWS Secret Key: AKIAIOSFODNN7EXAMPLE"
