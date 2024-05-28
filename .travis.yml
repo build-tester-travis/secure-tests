@@ -1,26 +1,16 @@
 language: python
 
-python:
-  - "3.8"
-
-# Define environment variables (example data for testing)
-env:
-  global:
-    - SECURE_API_KEY=secure_api_key_example
-    - AWS_SECRET_ACCESS_KEY=aws_secret_access_key_example
-    - AWS_ACCESS_KEY_ID=aws_access_key_id_example
-
-# Install dependencies
-install:
-  - pip install -r requirements.txt
-
-# Script that might print sensitive data
-script:
-  - echo "Running tests..."
-  # Simulate a 'secure' keyword exposure
-  - echo "This is a secure keyword example: $SECURE_API_KEY"
-  # Simulate an API token exposure
-  - echo "API token: 12345abcdef"
-  # Simulate AWS-like secret exposure
-  - echo "AWS Secret: $AWS_SECRET_ACCESS_KEY"
-  - echo "AWS Key: $AWS_ACCESS_KEY_ID"
+jobs:
+  include:
+    - stage: test
+      name: "Test 1: Detect Secure Keywords"
+      script:
+        - echo "This is a secure keyword: secure_password"
+    - stage: test
+      name: "Test 2: Detect API Tokens"
+      script:
+        - echo "API Token: 12345-abcdef-67890"
+    - stage: test
+      name: "Test 3: Detect AWS-like Secrets"
+      script:
+        - echo "AWS Secret Key: AKIAIOSFODNN7EXAMPLE"
